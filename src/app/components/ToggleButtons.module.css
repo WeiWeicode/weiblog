@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+}
+
+.toggleGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.buttonGroup {
+  display: flex;
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 3px;
+  box-shadow: var(--card-shadow);
+}
+
+.toggleButton {
+  background: transparent;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-color);
+}
+
+.toggleButton.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+.themeToggle {
+  display: flex;
+  align-items: center;
+}
+
+.themeButton {
+  background: var(--card-bg);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+}
+
+.themeButton:hover {
+  transform: rotate(30deg);
+}
+
+.themeIcon {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    position: static;
+    justify-content: center;
+    padding: 0.5rem 0;
+  }
+}

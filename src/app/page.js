@@ -1,14 +1,25 @@
+'use client';
+
 import Image from "next/image";
 import styles from "./page.module.css";
 import ClientAnimation from "./components/ClientAnimation";
+import ToggleButtons from "./components/ToggleButtons";
+import { useLanguage } from "./contexts/LanguageContext";
+import { useTheme } from "./contexts/ThemeContext";
 
+// We need to make this a Client Component since we're using hooks
 export default function Home() {
+  const { translations } = useLanguage();
+  const { theme } = useTheme();
+
   return (
     <div className={styles.page}>
+      <ToggleButtons />
+
       <header className={styles.header}>
         <div className={styles.nameContainer}>
           <h1 className={styles.name}>Wei's Blog</h1>
-          <p className={styles.tagline}>Thoughts on Code, AI & Systems</p>
+          <p className={styles.tagline}>{translations.tagline}</p>
         </div>
       </header>
 
@@ -17,18 +28,17 @@ export default function Home() {
         <section className={`${styles.heroSection}`}>
           <div className={styles.heroContent}>
             <h2 className={styles.heroTitle}>
-              Hello, I'm <span className={styles.highlight}>Wei</span>
+              {translations.heroTitle} <span className={styles.highlight}>Wei</span>
             </h2>
             <p className={styles.heroText}>
-              I'm passionate about building innovative solutions and sharing knowledge about
-              technology.
+              {translations.heroText}
             </p>
             <div className={styles.ctas}>
               <a href="#about" className={styles.primary}>
-                Learn More
+                {translations.learnMore}
               </a>
               <a href="#contact" className={styles.secondary}>
-                Get In Touch
+                {translations.getInTouch}
               </a>
             </div>
           </div>
@@ -46,7 +56,7 @@ export default function Home() {
 
         {/* Expertise Section */}
         <section id="expertise" className={`${styles.section} ${styles.hidden}`}>
-          <h2 className={styles.sectionTitle}>My Expertise</h2>
+          <h2 className={styles.sectionTitle}>{translations.expertise}</h2>
           <div className={styles.expertiseGrid}>
             <div className={`${styles.expertiseCard} ${styles.hidden}`}>
               <Image
@@ -55,8 +65,8 @@ export default function Home() {
                 width={50}
                 height={50}
               />
-              <h3>Full Stack Development</h3>
-              <p>Creating seamless applications from front to back</p>
+              <h3>{translations.fullStack}</h3>
+              <p>{translations.fullStackDesc}</p>
             </div>
             <div className={`${styles.expertiseCard} ${styles.hidden}`}>
               <Image
@@ -65,8 +75,8 @@ export default function Home() {
                 width={50}
                 height={50}
               />
-              <h3>Artificial Intelligence</h3>
-              <p>Implementing intelligent solutions for complex problems</p>
+              <h3>{translations.ai}</h3>
+              <p>{translations.aiDesc}</p>
             </div>
             <div className={`${styles.expertiseCard} ${styles.hidden}`}>
               <Image
@@ -75,8 +85,8 @@ export default function Home() {
                 width={50}
                 height={50}
               />
-              <h3>Network Engineering</h3>
-              <p>Designing robust network infrastructures</p>
+              <h3>{translations.network}</h3>
+              <p>{translations.networkDesc}</p>
             </div>
             <div className={`${styles.expertiseCard} ${styles.hidden}`}>
               <Image
@@ -85,8 +95,8 @@ export default function Home() {
                 width={50}
                 height={50}
               />
-              <h3>System Architecture</h3>
-              <p>Building scalable and reliable system architectures</p>
+              <h3>{translations.system}</h3>
+              <p>{translations.systemDesc}</p>
             </div>
             <div className={`${styles.expertiseCard} ${styles.hidden}`}>
               <Image
@@ -95,50 +105,46 @@ export default function Home() {
                 width={50}
                 height={50}
               />
-              <h3>Process Planning</h3>
-              <p>Optimizing workflows and development processes</p>
+              <h3>{translations.process}</h3>
+              <p>{translations.processDesc}</p>
             </div>
           </div>
         </section>
 
         {/* About Section */}
         <section id="about" className={`${styles.section} ${styles.hidden}`}>
-          <h2 className={styles.sectionTitle}>About Me</h2>
+          <h2 className={styles.sectionTitle}>{translations.about}</h2>
           <div className={styles.aboutContent}>
             <p className={styles.aboutText}>
-              As a passionate technologist with expertise in both frontend and backend development,
-              I bring ideas to life through code. My experience spans AI implementation, network
-              architecture, system design, and process optimization.
+              {translations.aboutText1}
             </p>
             <p className={styles.aboutText}>
-              I love to share knowledge through this blog and explore the cutting edge of
-              technology. When I'm not coding, I enjoy researching new techniques and contributing
-              to open-source communities.
+              {translations.aboutText2}
             </p>
           </div>
         </section>
 
         {/* Recent Posts Section */}
         <section id="recent-posts" className={`${styles.section} ${styles.hidden}`}>
-          <h2 className={styles.sectionTitle}>Recent Posts</h2>
+          <h2 className={styles.sectionTitle}>{translations.recentPosts}</h2>
           <div className={styles.postsGrid}>
             <div className={`${styles.postCard} ${styles.hidden}`}>
               <div className={styles.postDate}>May 15, 2023</div>
               <h3>Building Scalable Web Applications</h3>
               <p>Techniques for creating web applications that can handle growth...</p>
-              <a href="#" className={styles.readMore}>Read More →</a>
+              <a href="#" className={styles.readMore}>{translations.readMore}</a>
             </div>
             <div className={`${styles.postCard} ${styles.hidden}`}>
               <div className={styles.postDate}>April 22, 2023</div>
               <h3>AI in Everyday Applications</h3>
               <p>How artificial intelligence is changing the way we interact with software...</p>
-              <a href="#" className={styles.readMore}>Read More →</a>
+              <a href="#" className={styles.readMore}>{translations.readMore}</a>
             </div>
             <div className={`${styles.postCard} ${styles.hidden}`}>
               <div className={styles.postDate}>March 10, 2023</div>
               <h3>Modern Network Security Practices</h3>
               <p>Essential security practices for today's network environments...</p>
-              <a href="#" className={styles.readMore}>Read More →</a>
+              <a href="#" className={styles.readMore}>{translations.readMore}</a>
             </div>
           </div>
         </section>
@@ -147,7 +153,7 @@ export default function Home() {
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
           <div className={styles.footerSection}>
-            <h3>Connect</h3>
+            <h3>{translations.connect}</h3>
             <div className={styles.socialLinks}>
               <a href="#" aria-label="GitHub">
                 <Image src="/file.svg" alt="GitHub" width={24} height={24} />
@@ -161,12 +167,12 @@ export default function Home() {
             </div>
           </div>
           <div id="contact" className={styles.footerSection}>
-            <h3>Contact</h3>
-            <p>Email: wei@example.com</p>
+            <h3>{translations.contact}</h3>
+            <p>{translations.email}</p>
           </div>
         </div>
         <div className={styles.copyright}>
-          © {new Date().getFullYear()} Wei's Blog. All rights reserved.
+          {translations.copyright.replace('{year}', new Date().getFullYear())}
         </div>
       </footer>
       

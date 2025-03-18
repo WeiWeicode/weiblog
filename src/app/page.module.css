@@ -21,8 +21,24 @@
   overflow-x: hidden;
 }
 
+/* Dark theme styles will apply when data-theme="dark" is set on html */
+[data-theme='dark'] .page {
+  --gray-rgb: 255, 255, 255;
+  --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
+  --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
+  --button-primary-hover: #2186c4;
+  --button-secondary-hover: #1a1a1a;
+  --primary-color: #61a5e0;
+  --text-color: #e0e0e0;
+  --background-color: #121212;
+  --section-bg: #1e1e1e;
+  --card-bg: #252525;
+  --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Fallback to use prefers-color-scheme if no data-theme is set */
 @media (prefers-color-scheme: dark) {
-  .page {
+  html:not([data-theme]) .page {
     --gray-rgb: 255, 255, 255;
     --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
     --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
@@ -474,8 +490,13 @@ a.secondary:hover {
   }
 }
 
+/* Logo style for dark mode */
+[data-theme='dark'] .logo {
+  filter: invert();
+}
+
 @media (prefers-color-scheme: dark) {
-  .logo {
+  html:not([data-theme]) .logo {
     filter: invert();
   }
 }
