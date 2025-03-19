@@ -1,6 +1,7 @@
 'use client';
 
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./page.module.css";
 import ClientAnimation from "./components/ClientAnimation";
 import ToggleButtons from "./components/ToggleButtons";
@@ -14,7 +15,18 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
-      <ToggleButtons />
+      <div className={styles.navBar}>
+        <div className={styles.navBarContent}>
+          <div className={styles.rightElements}>
+            <nav className={styles.navigation}>
+              <Link href="/blog" className={styles.navLink}>
+                {translations.blog}
+              </Link>
+            </nav>
+            <ToggleButtons />
+          </div>
+        </div>
+      </div>
 
       <header className={styles.header}>
         <div className={styles.nameContainer}>
@@ -43,7 +55,7 @@ export default function Home() {
             </div>
           </div>
           <div className={styles.heroImage}>
-            <Image 
+            <Image
               src="/globe.svg"
               alt="Digital World"
               width={300}
@@ -132,19 +144,19 @@ export default function Home() {
               <div className={styles.postDate}>May 15, 2023</div>
               <h3>Building Scalable Web Applications</h3>
               <p>Techniques for creating web applications that can handle growth...</p>
-              <a href="#" className={styles.readMore}>{translations.readMore}</a>
+              <Link href="/blog/building-scalable-web-applications" className={styles.readMore}>{translations.readMore}</Link>
             </div>
             <div className={`${styles.postCard} ${styles.hidden}`}>
               <div className={styles.postDate}>April 22, 2023</div>
               <h3>AI in Everyday Applications</h3>
               <p>How artificial intelligence is changing the way we interact with software...</p>
-              <a href="#" className={styles.readMore}>{translations.readMore}</a>
+              <Link href="/blog/ai-in-everyday-applications" className={styles.readMore}>{translations.readMore}</Link>
             </div>
             <div className={`${styles.postCard} ${styles.hidden}`}>
               <div className={styles.postDate}>March 10, 2023</div>
               <h3>Modern Network Security Practices</h3>
               <p>Essential security practices for today's network environments...</p>
-              <a href="#" className={styles.readMore}>{translations.readMore}</a>
+              <Link href="#" className={styles.readMore}>{translations.readMore}</Link>
             </div>
           </div>
         </section>
@@ -175,7 +187,7 @@ export default function Home() {
           {translations.copyright.replace('{year}', new Date().getFullYear())}
         </div>
       </footer>
-      
+
       <ClientAnimation />
     </div>
   );

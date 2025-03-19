@@ -2,9 +2,7 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
+  /* Removing absolute positioning */
   z-index: 100;
 }
 

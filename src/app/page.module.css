@@ -21,6 +21,52 @@
   overflow-x: hidden;
 }
 
+.navBar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem 2rem;
+  width: 100%;
+}
+
+.navBarContent {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.rightElements {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.navLink {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+  background-color: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  margin-right: 1rem;
+}
+
+.navLink:hover {
+  background-color: var(--accent-light);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
 /* Dark theme styles will apply when data-theme="dark" is set on html */
 [data-theme='dark'] .page {
   --gray-rgb: 255, 255, 255;
@@ -125,9 +171,17 @@
 }
 
 @keyframes floating {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .heroTitle {
@@ -430,6 +484,7 @@ a.secondary:hover {
 }
 
 @media (max-width: 768px) {
+
   .expertiseGrid,
   .postsGrid {
     grid-template-columns: 1fr;
@@ -483,6 +538,7 @@ a.secondary:hover {
 
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
+
   .expertiseCard:hover,
   .postCard:hover,
   .socialLinks a:hover {

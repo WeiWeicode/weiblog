@@ -27,11 +27,18 @@ const en = {
   readMore: "Read More →",
   connect: "Connect",
   contact: "Contact",
-  email: "Email: wei@example.com",
+  email: "Email: asdf0359@gmail.com",
   copyright: "© {year} Wei's Blog. All rights reserved.",
   dark: "Dark",
   light: "Light",
   language: "Language",
+  blog: "Blog",
+  allPosts: "All Posts",
+  blogHeading: "Latest Articles",
+  blogSubheading: "Thoughts, ideas, and explorations in technology",
+  readPost: "Read Post",
+  back: "Back to Blog",
+  publishedOn: "Published on",
 };
 
 // Simplified Chinese translations
@@ -59,11 +66,18 @@ const zh = {
   readMore: "阅读更多 →",
   connect: "社交媒体",
   contact: "联系方式",
-  email: "电子邮件: wei@example.com",
+  email: "电子邮件: asdf0359@gmail.com",
   copyright: "© {year} Wei的博客。保留所有权利。",
   dark: "暗色",
   light: "亮色",
   language: "语言",
+  blog: "博客",
+  allPosts: "所有文章",
+  blogHeading: "最新文章",
+  blogSubheading: "关于技术的思考、创意和探索",
+  readPost: "阅读文章",
+  back: "返回博客",
+  publishedOn: "发布于",
 };
 
 // Traditional Chinese translations
@@ -91,11 +105,18 @@ const zhTW = {
   readMore: "閱讀更多 →",
   connect: "社交媒體",
   contact: "聯絡方式",
-  email: "電子郵件: wei@example.com",
+  email: "電子郵件: asdf0359@gmail.com",
   copyright: "© {year} Wei的部落格。保留所有權利。",
   dark: "暗色",
   light: "亮色",
   language: "語言",
+  blog: "部落格",
+  allPosts: "所有文章",
+  blogHeading: "最新文章",
+  blogSubheading: "關於技術的思考、創意和探索",
+  readPost: "閱讀文章",
+  back: "返回部落格",
+  publishedOn: "發佈於",
 };
 
 // Create the language context
