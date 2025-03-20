@@ -1,10 +1,8 @@
-@import '../shared.module.css';
-
+/* Shared styles for parent and child components */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
-
 }
 
 .navBar {
@@ -26,9 +24,8 @@
     display: flex;
     align-items: center;
     gap: 2rem;
-  }
+}
 
-/* Header Styles */
 .header {
     padding: 2rem 5%;
     display: flex;
@@ -36,7 +33,7 @@
     align-items: center;
     width: 100%;
     text-align: center;
-  }
+}
 
 .title {
     text-align: center;

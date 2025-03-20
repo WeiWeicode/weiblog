@@ -1,3 +1,7 @@
+@import './shared.module.css';
+
+/* Additional styles specific to this component */
+
 .page {
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);

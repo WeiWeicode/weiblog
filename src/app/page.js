@@ -22,6 +22,9 @@ export default function Home() {
               <Link href="/blog" className={styles.navLink}>
                 {translations.blog}
               </Link>
+              {/* <Link href="/testpage" className={styles.navLink}>
+                {"testpage"}
+              </Link> */}
             </nav>
             <ToggleButtons />
           </div>
