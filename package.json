@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/cssinjs": "^1.23.0",
+    "@ant-design/nextjs-registry": "^1.0.2",
     "@notionhq/client": "^2.3.0",
+    "antd": "^5.24.4",
     "date-fns": "^4.1.0",
     "next": "15.2.3",
     "next-sanity": "^9.9.5",

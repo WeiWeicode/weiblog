@@ -39,6 +39,11 @@ const en = {
   readPost: "Read Post",
   back: "Back to Blog",
   publishedOn: "Published on",
+  home: "Home",
+  blog: "Blog",
+  theme: "Theme",
+  lightTheme: "Light Theme",
+  darkTheme: "Dark Theme",
 };
 
 // Simplified Chinese translations
@@ -78,6 +83,11 @@ const zh = {
   readPost: "阅读文章",
   back: "返回博客",
   publishedOn: "发布于",
+  home: "首页",
+  blog: "博客",
+  theme: "主题",
+  lightTheme: "亮色主题",
+  darkTheme: "暗色主题",
 };
 
 // Traditional Chinese translations
@@ -117,6 +127,11 @@ const zhTW = {
   readPost: "閱讀文章",
   back: "返回部落格",
   publishedOn: "發佈於",
+  home: "首頁",
+  blog: "部落格",
+  theme: "主題",
+  lightTheme: "亮色主題",
+  darkTheme: "暗色主題",
 };
 
 // Create the language context

@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
+import { NotionProvider } from "./contexts/NotionContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,7 +25,9 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ThemeProvider>
           <LanguageProvider>
-            {children}
+            <NotionProvider>
+              {children}
+            </NotionProvider>
           </LanguageProvider>
         </ThemeProvider>
       </body>

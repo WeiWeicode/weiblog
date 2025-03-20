@@ -1,6 +1,5 @@
 "use client";
 
-import { Client } from "@notionhq/client";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../page.module.css";
@@ -8,25 +7,21 @@ import ClientAnimation from "../components/ClientAnimation";
 import ToggleButtons from "../components/ToggleButtons";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useTheme } from "../contexts/ThemeContext";
+import { useNotion } from "../contexts/NotionContext";
 import { FaHome } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
 
-function HomeClient({ cards }) {
+export default function TestPage() {
   const { translations } = useLanguage();
+  const { theme } = useTheme();
+  const { cards, isLoading, error, reloadData } = useNotion();
+  
+  // No need for useEffect here since the NotionProvider already fetches on mount
 
   return (
     <div className={styles.page}>
       <div className={styles.navBar}>
         <div className={styles.navBarContent}>
-          <div className={styles.rightElements}>
-            <nav className={styles.navigation}>
-              <Link href="/blog" className={styles.navLink}>
-                {translations.blog}
-              </Link>
-              <Link href="/" className={styles.navLink}>
-                <FaHome />
-              </Link>
-            </nav>
+          <div className={styles.rightElements}>            
             <ToggleButtons />
           </div>
         </div>
@@ -40,28 +35,45 @@ function HomeClient({ cards }) {
       </header>
 
       <main className={styles.main}>
-        <div className={styles.cardGrid}>
-          {cards.map(card => (
-            <div key={card.id} className={styles.card}>
-              <div className={styles.cardImageContainer}>
-                <img src={card.imageUrl} alt={card.title} className={styles.cardImage} />
-              </div>
-              <div className={styles.cardContent}>
-                <h2 className={styles.cardTitle}>{card.title}</h2>
-                <p className={styles.cardDescription}>{card.summary}</p>
-                <p className={styles.cardDate}>{card.date}</p>
-                <a
-                  href={card.notionPageUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.cardButton}
-                >
-                  Read More
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
+        {isLoading ? (
+          <div className={styles.loadingContainer}>
+            <p>Loading Notion data...</p>
+          </div>
+        ) : error ? (
+          <div className={styles.errorContainer}>
+            <p>Error: {error}</p>
+            <button onClick={reloadData} className={styles.reloadButton}>
+              Try Again
+            </button>
+          </div>
+        ) : (
+          <div className={styles.cardGrid}>
+            {cards.length === 0 ? (
+              <p>No Notion data available. Make sure your Notion integration is properly set up.</p>
+            ) : (
+              cards.map(card => (
+                <div key={card.id} className={styles.card}>
+                  <div className={styles.cardImageContainer}>
+                    <img src={card.imageUrl} alt={card.title} className={styles.cardImage} />
+                  </div>
+                  <div className={styles.cardContent}>
+                    <h2 className={styles.cardTitle}>{card.title}</h2>
+                    <p className={styles.cardDescription}>{card.summary}</p>
+                    <p className={styles.cardDate}>{card.date}</p>
+                    <a
+                      href={card.notionPageUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.cardButton}
+                    >
+                      Read More
+                    </a>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        )}
       </main>
 
       <footer className={styles.footer}>
@@ -93,49 +105,4 @@ function HomeClient({ cards }) {
       <ClientAnimation />
     </div>
   );
-}
-
-export default async function Home() {
-  // 初始化 Notion 客戶端
-  const notion = new Client({ auth: process.env.NOTION_TOKEN });
-  const response = await notion.databases.query({
-    database_id: process.env.NOTION_DATABASE_ID,
-    filter: {
-      property: "status",
-      select: {
-        equals: "Published"
-      }
-    },
-    sorts: [
-      {
-        property: "date",
-        direction: "descending"
-      }
-    ]
-  });
-  // 轉換 Notion 回傳資料成卡片格式
-  const cards = response.results.map((page) => {
-    const titleProperty = page.properties.title;
-    const summaryProperty = page.properties.summary;
-    const dateProperty = page.properties.date;
-
-    // 解析標題、摘要及日期欄位
-    const title = titleProperty?.title[0]?.plain_text || "無標題";
-    const summary = summaryProperty?.rich_text[0]?.plain_text || "無摘要";
-    const date = dateProperty?.date?.start || "無日期";
-
-    // 若有封面圖片則使用，否則使用預設圖片
-    const imageUrl = page.cover?.external?.url || page.cover?.file?.url || "https://picsum.photos/300/200";
-
-    return {
-      id: page.id,
-      title,
-      summary,
-      date,
-      imageUrl,
-      notionPageUrl: page.url,
-    };
-  });
-
-  return <HomeClient cards={cards} />;
 }

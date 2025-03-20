@@ -68,6 +68,34 @@
   font-size: 1.2rem;
 }
 
+/* 暗色主题菜单 */
+.darkMenu {
+  background: #1f1f1f;
+  border: 1px solid #444;
+}
+
+.darkMenu .ant-dropdown-menu-item,
+.darkMenu .ant-dropdown-menu-submenu-title {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* 激活状态菜单项 */
+.menuActive {
+  background-color: #e6f7ff !important;
+  color: #1890ff !important;
+}
+
+/* 导航触发按钮样式 */
+.navTrigger {
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.navTrigger:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
 @media (max-width: 768px) {
   .container {
     position: static;

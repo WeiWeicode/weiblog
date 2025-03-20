@@ -13,19 +13,16 @@ export default function Home() {
   const { translations } = useLanguage();
   const { theme } = useTheme();
 
+  // testButton
+  const testButton = () => {
+    console.log("testButton clicked!");
+  }
+
   return (
     <div className={styles.page}>
       <div className={styles.navBar}>
         <div className={styles.navBarContent}>
-          <div className={styles.rightElements}>
-            <nav className={styles.navigation}>
-              <Link href="/blog" className={styles.navLink}>
-                {translations.blog}
-              </Link>
-              {/* <Link href="/testpage" className={styles.navLink}>
-                {"testpage"}
-              </Link> */}
-            </nav>
+          <div className={styles.rightElements}>            
             <ToggleButtons />
           </div>
         </div>

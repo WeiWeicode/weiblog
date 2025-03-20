@@ -8,10 +8,7 @@ import ToggleButtons from '../components/ToggleButtons';
 
 const ClientComponent = () => {
     return (
-        <div>
-            <Link href="/">
-                <FaHome />
-            </Link>
+        <div>            
             <ToggleButtons />
         </div>
     );
