@@ -23,6 +23,7 @@ export async function GET() {
       ]
     });
 
+
     // Process the data before sending it to the client
     const processedData = {
       results: response.results.map((page) => {
@@ -33,6 +34,8 @@ export async function GET() {
         // Parse title, summary, and date fields
         const title = titleProperty?.title[0]?.plain_text || "No Title";
         const summary = summaryProperty?.rich_text[0]?.plain_text || "No Summary";
+        const category = page.properties.category?.select?.name || "No Category";
+        const tags = page.properties.tags?.multi_select.map(tag => tag.name) || ["No Tags"];
         const date = dateProperty?.date?.start || "No Date";
 
         // Use cover image if available, otherwise use default
@@ -42,12 +45,15 @@ export async function GET() {
           id: page.id,
           title,
           summary,
+          category,
+          tags,
           date,
           imageUrl,
           notionPageUrl: page.url,
         };
       })
     };
+    console.log(processedData.results);
     
     return NextResponse.json(processedData);
   } catch (error) {

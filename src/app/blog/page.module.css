@@ -131,6 +131,7 @@
   transform: translateY(-2px);
 }
 
+
 /* Media queries for responsive design */
 @media (max-width: 900px) {
   .blogGrid {
@@ -146,4 +147,155 @@
   .blogImageContainer {
     height: 180px;
   }
+}
+
+.card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.cardImageContainer {
+  height: 200px;
+  overflow: hidden;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardContent {
+  padding: 16px;
+  background-color: #fff;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.cardCategory {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #0070f3;
+  margin-bottom: 8px;
+}
+
+/* Enhanced category styling with wrapper for better spacing */
+.cardCategoryWrapper {
+  margin-bottom: 16px;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(var(--gray-rgb), 0.1);
+}
+
+.enhancedCategory {
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  padding: 4px 12px !important;
+  border-radius: 16px !important;
+}
+
+.cardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(var(--gray-rgb), 0.1);
+}
+
+.cardTag {
+  border-radius: 16px !important;
+  padding: 3px 10px !important;
+  font-size: 0.8rem !important;
+  transition: transform 0.2s ease;
+}
+
+.cardTag:hover {
+  transform: translateY(-2px);
+}
+
+.cardDate {
+  font-size: 0.875rem;
+  color: #999;
+  margin-bottom: 16px;
+}
+
+.cardButton {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #0070f3;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.cardButton:hover {
+  background-color: #005bb5;
+}
+
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  padding: 1rem;
+}
+
+/* 自定義分頁組件樣式 */
+.paginationContainer :global(.ant-pagination-item) {
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.paginationContainer :global(.ant-pagination-item-active) {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.paginationContainer :global(.ant-pagination-item:hover) {
+  border-color: var(--primary-color);
+}
+
+.paginationContainer :global(.ant-pagination-item-active a),
+.paginationContainer :global(.ant-pagination-item-active:hover a) {
+  color: white;
+}
+
+.paginationContainer :global(.ant-pagination-item:hover a) {
+  color: var(--primary-color);
+}
+
+.paginationContainer :global(.ant-pagination-prev),
+.paginationContainer :global(.ant-pagination-next) {
+  transition: all 0.3s ease;
+}
+
+.paginationContainer :global(.ant-pagination-prev:hover),
+.paginationContainer :global(.ant-pagination-next:hover) {
+  border-color: var(--primary-color);
+}
+
+.paginationContainer :global(.ant-pagination-prev:hover button),
+.paginationContainer :global(.ant-pagination-next:hover button) {
+  color: var(--primary-color);
 }

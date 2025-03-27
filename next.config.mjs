@@ -14,12 +14,17 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'www.notion.so',
             },
+            {
+                protocol: 'https',
+                hostname: 'picsum.photos',
+            },
         ],
         domains: [
             'www.notion.so',
             'notion.so',
             'images.unsplash.com',
-            'pbs.twimg.com'
+            'pbs.twimg.com',
+            'picsum.photos'
         ],
         formats: ['image/avif', 'image/webp']
     },
