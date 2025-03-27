@@ -53,7 +53,7 @@ export async function GET() {
         };
       })
     };
-    console.log(processedData.results);
+    // console.log(processedData.results);
     
     return NextResponse.json(processedData);
   } catch (error) {

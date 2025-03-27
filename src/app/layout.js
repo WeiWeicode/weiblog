@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { NotionProvider } from "./contexts/NotionContext";
+import { Analytics } from "@vercel/analytics/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
           <LanguageProvider>
             <NotionProvider>
               {children}
+              <Analytics />
             </NotionProvider>
           </LanguageProvider>
         </ThemeProvider>
