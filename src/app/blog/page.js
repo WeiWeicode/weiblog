@@ -26,6 +26,8 @@ export default function TestPage() {
   const [selectedTags, setSelectedTags] = useState([]);
   const [allTags, setAllTags] = useState([]);
   const [allCategories, setAllCategories] = useState([]);
+  const [tagsByCategory, setTagsByCategory] = useState({});
+  const [availableTags, setAvailableTags] = useState([]);
   
   const pageSize = 10;
 
@@ -52,23 +54,64 @@ export default function TestPage() {
       const uniqueTags = new Set();
       // 提取所有唯一的分類
       const uniqueCategories = new Set();
+      // 按照分類整理標籤
+      const categoryTagsMap = {};
       
       cards.forEach(card => {
-        // 處理標籤
-        if (card.tags && Array.isArray(card.tags)) {
-          card.tags.forEach(tag => uniqueTags.add(tag));
-        }
-        
         // 處理分類
         if (card.category) {
           uniqueCategories.add(card.category);
+          
+          // 初始化分類的標籤集合
+          if (!categoryTagsMap[card.category]) {
+            categoryTagsMap[card.category] = new Set();
+          }
+          
+          // 處理標籤
+          if (card.tags && Array.isArray(card.tags)) {
+            card.tags.forEach(tag => {
+              if (tag !== "No Tags") {
+                uniqueTags.add(tag);
+                // 將標籤添加到相應分類的集合中
+                categoryTagsMap[card.category].add(tag);
+              }
+            });
+          }
         }
       });
       
+      // 將Set轉換為陣列並儲存
       setAllTags(Array.from(uniqueTags).filter(tag => tag !== "No Tags"));
       setAllCategories(Array.from(uniqueCategories).filter(category => category !== "No Category"));
+      
+      // 將每個分類的標籤集合轉換為陣列
+      const processedTagsByCategory = {};
+      Object.keys(categoryTagsMap).forEach(category => {
+        processedTagsByCategory[category] = Array.from(categoryTagsMap[category]);
+      });
+      
+      setTagsByCategory(processedTagsByCategory);
+      // 初始化可用標籤為所有標籤
+      setAvailableTags(Array.from(uniqueTags).filter(tag => tag !== "No Tags"));
     }
   }, [cards]);
+
+  // Update available tags when category changes
+  useEffect(() => {
+    // If no category selected, show all tags
+    if (!selectedCategory) {
+      setAvailableTags(allTags);
+      setSelectedTags([]); // Reset selected tags when category is cleared
+    } else {
+      // If category is selected, filter tags to only those in this category
+      const tagsForCategory = tagsByCategory[selectedCategory] || [];
+      setAvailableTags(tagsForCategory);
+      // Remove any selected tags that aren't in the new category
+      setSelectedTags(prevSelectedTags => 
+        prevSelectedTags.filter(tag => tagsForCategory.includes(tag))
+      );
+    }
+  }, [selectedCategory, tagsByCategory, allTags]);
 
   const handleCopy = async (text) => {
     try {
@@ -195,7 +238,7 @@ export default function TestPage() {
               onChange={setSelectedTags}
               allowClear
               className={`${styles.tagsSelect} ${theme === 'dark' ? styles.darkSelect : styles.lightSelect}`}
-              options={allTags.map(tag => ({ value: tag, label: tag }))}
+              options={availableTags.map(tag => ({ value: tag, label: tag }))}
             />
             
             <Button 
