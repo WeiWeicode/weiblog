@@ -1,12 +1,13 @@
-'use client';
+"use client";
 
-import { createContext, useState, useContext, useEffect } from 'react';
+import { createContext, useState, useContext, useEffect } from "react";
 
 // English translations
 const en = {
   tagline: "Thoughts on Code, AI & Systems",
   heroTitle: "Hello, I'm",
-  heroText: "I'm passionate about building innovative solutions and sharing knowledge about technology.",
+  heroText:
+    "I'm passionate about building innovative solutions and sharing knowledge about technology.",
   learnMore: "Learn More",
   getInTouch: "Get In Touch",
   expertise: "My Expertise",
@@ -21,8 +22,12 @@ const en = {
   process: "Process Planning",
   processDesc: "Optimizing workflows and development processes",
   about: "About Me",
-  aboutText1: "As a passionate technologist with expertise in both frontend and backend development, I bring ideas to life through code. My experience spans AI implementation, network architecture, system design, and process optimization.",
-  aboutText2: "I love to share knowledge through this blog and explore the cutting edge of technology. When I'm not coding, I enjoy researching new techniques and contributing to open-source communities.",
+  aboutText1:
+    "I am passionate about technology and currently learning AI, software architecture design, and cloud technologies. I am focused on exploring how to integrate AI into web applications, improving programming patterns, and gaining a deeper understanding of cloud architecture to make systems more flexible and scalable.",
+  aboutText2:
+    "Full-stack development (2020~present). Approval web system: Optimized internal approval processes for smoother and more efficient reviews. MES system web development: Enhanced the Manufacturing Execution System to ensure real-time and accurate production data.",
+  aboutText3:
+    "System and network architecture improvement (Feb 2017~May 2019). Information security system implementation (Jun 2019~Feb 2020). Led ERP and Oracle virtualization, improving performance by 40% and network speed by 50%.",
   recentPosts: "Recent Posts",
   readMore: "Read More →",
   connect: "Connect",
@@ -44,6 +49,13 @@ const en = {
   theme: "Theme",
   lightTheme: "Light Theme",
   darkTheme: "Dark Theme",
+  projects: "Projects",
+  projectBlog: "Personal Blog",
+  projectBlogDesc:
+    "A responsive blog built with Next.js featuring multilingual support and dark/light mode",
+  projectApproval: "Approval Workflow System",
+  projectApprovalDesc:
+    "An enterprise approval system that streamlines internal review processes",
 };
 
 // Simplified Chinese translations
@@ -65,8 +77,12 @@ const zh = {
   process: "流程规划",
   processDesc: "优化工作流程和开发流程",
   about: "关于我",
-  aboutText1: "作为一名热衷于前后端开发的技术专家，我通过代码将创意变为现实。我的经验涵盖人工智能实施、网络架构、系统设计和流程优化。",
-  aboutText2: "我喜欢通过这个博客分享知识并探索技术前沿。当我不编码时，我喜欢研究新技术并为开源社区做贡献。",
+  aboutText1:
+    "我对技术充满热情，正在学习 AI、程式架构设计 和 雲端技术。目前专注于探索如何将 AI 整合到网页应用，学习更好的程式设计模式，并深入了解雲端架构，让系统更具弹性和扩展性。",
+  aboutText2:
+    "全端开发(2020~至今)，签核网页系统：优化内部签核流程，让审核更顺畅、更有效率。MES系统网页开发：强化制造执行系统，确保生产数据即时且准确。",
+  aboutText3:
+    "系统与网络架构改善 (2017/2~2019/5)，资安系统导入 (2019/6~2020/2)，推动 ERP 与 Oracle 虚拟化，让效能提升 40%，网络速度提升 50%。",
   recentPosts: "最新文章",
   readMore: "阅读更多 →",
   connect: "社交媒体",
@@ -88,6 +104,11 @@ const zh = {
   theme: "主题",
   lightTheme: "亮色主题",
   darkTheme: "暗色主题",
+  projects: "项目",
+  projectBlog: "个人博客",
+  projectBlogDesc: "使用 Next.js 构建的响应式博客，支持多语言和深色/浅色模式",
+  projectApproval: "审批工作流系统",
+  projectApprovalDesc: "一个简化内部审核流程的企业审批系统",
 };
 
 // Traditional Chinese translations
@@ -109,8 +130,12 @@ const zhTW = {
   process: "流程規劃",
   processDesc: "優化工作流程和開發流程",
   about: "關於我",
-  aboutText1: "作為一名熱衷於前後端開發的技術專家，我透過程式碼將創意變為現實。我的經驗涵蓋人工智慧實施、網路架構、系統設計和流程優化。",
-  aboutText2: "我喜歡透過這個部落格分享知識並探索技術前沿。當我不寫程式時，我喜歡研究新技術並為開源社群做貢獻。",
+  aboutText1:
+    "我對技術充滿熱情，正在學習 AI、程式架構設計 和 雲端技術。目前專注於探索如何將 AI 整合到網頁應用，學習更好的程式設計模式，並深入了解雲端架構，讓系統更具彈性和擴展性。",
+  aboutText2:
+    "全端開發(2020~至今)，簽核網頁系統：優化內部簽核流程，讓審核更順暢、更有效率。MES系統網頁開發：強化製造執行系統，確保生產數據即時且準確。",
+  aboutText3:
+    "系統與網路架構改善 (2017/2~2019/5)，資安系統導入 (2019/6~2020/2)，推動 ERP 與 Oracle 虛擬化，讓效能提升 40%，網路速度提升 50%。",
   recentPosts: "最新文章",
   readMore: "閱讀更多 →",
   connect: "社交媒體",
@@ -132,6 +157,11 @@ const zhTW = {
   theme: "主題",
   lightTheme: "亮色主題",
   darkTheme: "暗色主題",
+  projects: "專案",
+  projectBlog: "個人部落格",
+  projectBlogDesc: "使用 Next.js 構建的響應式部落格，支援多語言和深色/淺色模式",
+  projectApproval: "審批工作流系統",
+  projectApprovalDesc: "一個簡化內部審核流程的企業審批系統",
 };
 
 // Create the language context
@@ -139,12 +169,12 @@ const LanguageContext = createContext();
 
 // Language provider component
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState("en");
   const [translations, setTranslations] = useState(en);
 
   // Load language preference from localStorage on client side
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('language');
+    const savedLanguage = localStorage.getItem("language");
     if (savedLanguage) {
       setLanguage(savedLanguage);
       setTranslations(getTranslationsByLanguage(savedLanguage));
@@ -153,10 +183,10 @@ export function LanguageProvider({ children }) {
 
   // Helper function to get translations based on language code
   const getTranslationsByLanguage = (lang) => {
-    switch(lang) {
-      case 'zh':
+    switch (lang) {
+      case "zh":
         return zh;
-      case 'zh-TW':
+      case "zh-TW":
         return zhTW;
       default:
         return en;
@@ -167,11 +197,13 @@ export function LanguageProvider({ children }) {
   const changeLanguage = (lang) => {
     setLanguage(lang);
     setTranslations(getTranslationsByLanguage(lang));
-    localStorage.setItem('language', lang);
+    localStorage.setItem("language", lang);
   };
 
   return (
-    <LanguageContext.Provider value={{ language, translations, changeLanguage }}>
+    <LanguageContext.Provider
+      value={{ language, translations, changeLanguage }}
+    >
       {children}
     </LanguageContext.Provider>
   );
@@ -181,7 +213,7 @@ export function LanguageProvider({ children }) {
 export function useLanguage() {
   const context = useContext(LanguageContext);
   if (context === undefined) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
+    throw new Error("useLanguage must be used within a LanguageProvider");
   }
   return context;
 }

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -16,13 +16,13 @@ export default function Home() {
   // testButton
   const testButton = () => {
     console.log("testButton clicked!");
-  }
+  };
 
   return (
     <div className={styles.page}>
       <div className={styles.navBar}>
         <div className={styles.navBarContent}>
-          <div className={styles.rightElements}>            
+          <div className={styles.rightElements}>
             <ToggleButtons />
           </div>
         </div>
@@ -40,11 +40,10 @@ export default function Home() {
         <section className={`${styles.heroSection}`}>
           <div className={styles.heroContent}>
             <h2 className={styles.heroTitle}>
-              {translations.heroTitle} <span className={styles.highlight}>Wei</span>
+              {translations.heroTitle}{" "}
+              <span className={styles.highlight}>Wei</span>
             </h2>
-            <p className={styles.heroText}>
-              {translations.heroText}
-            </p>
+            <p className={styles.heroText}>{translations.heroText}</p>
             <div className={styles.ctas}>
               <a href="#about" className={styles.primary}>
                 {translations.learnMore}
@@ -52,6 +51,10 @@ export default function Home() {
               <a href="#contact" className={styles.secondary}>
                 {translations.getInTouch}
               </a>
+              {/* blog */}
+              <Link href="/blog" className={styles.secondary}>
+                {translations.blog}
+              </Link>
             </div>
           </div>
           <div className={styles.heroImage}>
@@ -67,7 +70,10 @@ export default function Home() {
         </section>
 
         {/* Expertise Section */}
-        <section id="expertise" className={`${styles.section} ${styles.hidden}`}>
+        <section
+          id="expertise"
+          className={`${styles.section} ${styles.hidden}`}
+        >
           <h2 className={styles.sectionTitle}>{translations.expertise}</h2>
           <div className={styles.expertiseGrid}>
             <div className={`${styles.expertiseCard} ${styles.hidden}`}>
@@ -79,85 +85,70 @@ export default function Home() {
               />
               <h3>{translations.fullStack}</h3>
               <p>{translations.fullStackDesc}</p>
+              <div className={styles.techStack}>
+                <span>React</span>
+                <span>Vue</span>
+                <span>Node.js</span>
+                <span>Python</span>                
+                <span>SQL</span>
+                <span>Docker</span>
+                <span>Git</span>
+                <span>CI/CD</span>
+                <span>REST API</span>                
+              </div>
             </div>
+            
             <div className={`${styles.expertiseCard} ${styles.hidden}`}>
-              <Image
-                src="/globe.svg"
-                alt="AI"
-                width={50}
-                height={50}
-              />
+              <Image src="/globe.svg" alt="AI" width={50} height={50} />
               <h3>{translations.ai}</h3>
               <p>{translations.aiDesc}</p>
+              <div className={styles.techStack}>
+                <span>TensorFlow</span>
+                <span>PyTorch</span>
+                <span>OpenAI API</span>
+                <span>Machine Learning</span>
+                <span>Data Analysis</span>
+              </div>
             </div>
             <div className={`${styles.expertiseCard} ${styles.hidden}`}>
-              <Image
-                src="/file.svg"
-                alt="Network"
-                width={50}
-                height={50}
-              />
+              <Image src="/file.svg" alt="Network" width={50} height={50} />
               <h3>{translations.network}</h3>
               <p>{translations.networkDesc}</p>
+              <div className={styles.techStack}>
+                <span>Network Design</span>
+                <span>Firewall</span>
+                <span>VPN</span>
+                <span>Load Balancing</span>
+                <span>Network Security</span>
+                <span>Routing</span>
+              </div>
             </div>
             <div className={`${styles.expertiseCard} ${styles.hidden}`}>
-              <Image
-                src="/window.svg"
-                alt="System"
-                width={50}
-                height={50}
-              />
+              <Image src="/window.svg" alt="System" width={50} height={50} />
               <h3>{translations.system}</h3>
               <p>{translations.systemDesc}</p>
+              <div className={styles.techStack}>
+                <span>Linux</span>
+                <span>Windows</span>
+                <span>Virtualization</span>
+                <span>RDBMS</span>
+                <span>NoSQL</span>
+                <span>Cloud</span>
+                <span>BackUp</span>
+              </div>
             </div>
-            <div className={`${styles.expertiseCard} ${styles.hidden}`}>
-              <Image
-                src="/vercel.svg"
-                alt="Process Planning"
-                width={50}
-                height={50}
-              />
-              <h3>{translations.process}</h3>
-              <p>{translations.processDesc}</p>
-            </div>
+            
           </div>
         </section>
+
 
         {/* About Section */}
         <section id="about" className={`${styles.section} ${styles.hidden}`}>
           <h2 className={styles.sectionTitle}>{translations.about}</h2>
           <div className={styles.aboutContent}>
-            <p className={styles.aboutText}>
-              {translations.aboutText1}
-            </p>
-            <p className={styles.aboutText}>
-              {translations.aboutText2}
-            </p>
-          </div>
-        </section>
-
-        {/* Recent Posts Section */}
-        <section id="recent-posts" className={`${styles.section} ${styles.hidden}`}>
-          <h2 className={styles.sectionTitle}>{translations.recentPosts}</h2>
-          <div className={styles.postsGrid}>
-            <div className={`${styles.postCard} ${styles.hidden}`}>
-              <div className={styles.postDate}>May 15, 2023</div>
-              <h3>Building Scalable Web Applications</h3>
-              <p>Techniques for creating web applications that can handle growth...</p>
-              <Link href="/blog/building-scalable-web-applications" className={styles.readMore}>{translations.readMore}</Link>
-            </div>
-            <div className={`${styles.postCard} ${styles.hidden}`}>
-              <div className={styles.postDate}>April 22, 2023</div>
-              <h3>AI in Everyday Applications</h3>
-              <p>How artificial intelligence is changing the way we interact with software...</p>
-              <Link href="/blog/ai-in-everyday-applications" className={styles.readMore}>{translations.readMore}</Link>
-            </div>
-            <div className={`${styles.postCard} ${styles.hidden}`}>
-              <div className={styles.postDate}>March 10, 2023</div>
-              <h3>Modern Network Security Practices</h3>
-              <p>Essential security practices for today's network environments...</p>
-              <Link href="#" className={styles.readMore}>{translations.readMore}</Link>
-            </div>
+            <p className={styles.aboutText}>{translations.aboutText1}</p>
+            <p className={styles.aboutText}>{translations.aboutText2}</p>
+            <p className={styles.aboutText}>{translations.aboutText3}</p>
           </div>
         </section>
       </main>
@@ -167,14 +158,34 @@ export default function Home() {
           <div className={styles.footerSection}>
             <h3>{translations.connect}</h3>
             <div className={styles.socialLinks}>
-              <a href="#" aria-label="GitHub">
-                <Image src="/file.svg" alt="GitHub" width={24} height={24} />
+              <a
+                href="https://github.com/WeiWeicode"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+              >
+                <Image src="/github.svg" alt="GitHub" width={24} height={24} />
               </a>
-              <a href="#" aria-label="LinkedIn">
-                <Image src="/globe.svg" alt="LinkedIn" width={24} height={24} />
+              <a
+                href="https://www.linkedin.com/in/jia-wei-jiang-017422245/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <Image src="/linkedin.svg" alt="LinkedIn" width={24} height={24} />
               </a>
-              <a href="#" aria-label="Twitter">
-                <Image src="/window.svg" alt="Twitter" width={24} height={24} />
+              <a
+                href="https://www.instagram.com/wei.code?igsh=OWc5bmlhcHp6aW84:"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <Image
+                  src="/instagram.svg"
+                  alt="Instagram"
+                  width={24}
+                  height={24}
+                />
               </a>
             </div>
           </div>
@@ -184,7 +195,7 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.copyright}>
-          {translations.copyright.replace('{year}', new Date().getFullYear())}
+          {translations.copyright.replace("{year}", new Date().getFullYear())}
         </div>
       </footer>
 
