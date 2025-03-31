@@ -166,14 +166,7 @@ export default function Home() {
               >
                 <Image src="/github.svg" alt="GitHub" width={24} height={24} />
               </a>
-              <a
-                href="https://www.linkedin.com/in/jia-wei-jiang-017422245/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              >
-                <Image src="/linkedin.svg" alt="LinkedIn" width={24} height={24} />
-              </a>
+              
               <a
                 href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile"
                 target="_blank"

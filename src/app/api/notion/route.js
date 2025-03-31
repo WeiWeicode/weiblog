@@ -17,8 +17,8 @@ export async function GET() {
       },
       sorts: [
         {
-          property: "date",
-          direction: "descending"
+          property: "slug",
+          direction: "ascending"
         }
       ]
     });

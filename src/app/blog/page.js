@@ -421,19 +421,7 @@ export default function TestPage() {
               >
                 <Image src="/github.svg" alt="GitHub" width={24} height={24} />
               </a>
-              <a
-                href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              >
-                <Image
-                  src="/linkedin.svg"
-                  alt="LinkedIn"
-                  width={24}
-                  height={24}
-                />
-              </a>
+              
               <a
                 href="https://www.instagram.com/wei.code?igsh=OWc5bmlhcHp6aW84:"
                 target="_blank"
